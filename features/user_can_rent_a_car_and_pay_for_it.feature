@@ -23,4 +23,5 @@ Feature: User can rent a car and pay for it
         And I wait 3 seconds
         And I fill in the payment form
         And submit the payment form
+        And I wait 2 seconds
         Then I should see "You just rented an AUDI!"
