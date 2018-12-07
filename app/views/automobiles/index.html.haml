@@ -7,3 +7,4 @@
         %p.text-grey-darker.text-base0="Year: #{car.year}"
         %p.text-grey-darker.text-base="Price: #{car.price} SEK per day" 
         = link_to "view"
+        = link_to "Rent", new_rental_path(automobile_id: car)
