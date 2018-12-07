@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'haml'
+gem 'stripe-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,6 +27,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'coveralls', require: false
   gem 'launchy'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
+  gem 'stripe-ruby-mock', '~> 2.5.4', require: 'stripe_mock'
 end
 
 group :development do
