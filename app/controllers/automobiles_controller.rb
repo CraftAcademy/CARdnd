@@ -2,6 +2,9 @@ class AutomobilesController < ApplicationController
   def index
     @automobiles = Automobile.all
   end
+  def show
+    @automobile = Automobile.find(params[:id])
+  end
 
   def new
     @automobile = Automobile.new
@@ -21,7 +24,7 @@ class AutomobilesController < ApplicationController
   private
 
   def automobile_params
-    params.require(:automobile).permit(:brand, :model, :year, :price)
+    params.require(:automobile).permit(:brand, :model, :year, :price, :engine, :description)
   end
 
 end

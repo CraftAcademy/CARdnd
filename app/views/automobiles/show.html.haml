@@ -1,0 +1,17 @@
+.flex.justify-center.mt-8.mr-8.ml-8
+    .max-w-lg.rounded.overflow-hidden.shadow-lg{id: dom_id(@automobile)}
+        %img.w-full{src: "https://www.askideas.com/wp-content/uploads/2016/11/Man-Driving-Tiny-Car-Funny-Picture.jpg"}/
+        .px-6.py-4
+            .font-bold.text-xl.mb-2= "#{@automobile.brand}"
+            .font-semibold.text-xl.mb-2= "#{@automobile.model}"
+            %p.text-grey-darker.text-base= "Description: #{@automobile.description}"
+        .px-6.py-4
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2="Year: #{@automobile.year}"
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker="Price: #{@automobile.price} SEK per day"
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker= "Engine: #{@automobile.engine}"
+            - if @automobile.rental_status?
+                Currently rented
+            -else
+                .px-6.py-4
+                .flex.self-auto.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker=link_to  "Rent this car"
+= link_to "Back" , root_path

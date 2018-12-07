@@ -7,6 +7,9 @@ RSpec.describe Automobile, type: :model do
     it { is_expected.to have_db_column :year }
     it { is_expected.to have_db_column :price }
     it { is_expected.to have_db_column :user_id }
+    it { is_expected.to have_db_column :description }
+    it { is_expected.to have_db_column :engine }
+    it { is_expected.to have_db_column :rental_status }
   end
 
   describe 'Validations' do

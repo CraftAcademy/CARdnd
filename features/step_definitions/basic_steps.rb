@@ -68,3 +68,21 @@ end
 Given('I wait {int} seconds') do |int|
   sleep int
 end
+
+Given("The following cars exist") do |table|
+    table.hashes.each do |car|
+        user = User.find_or_create_by(first_name: car[:user])
+        car.except!('user')
+        Automobile.create(car.merge(user: user))
+    end
+end
+
+Given("I click {string} within {string}") do |element, card|
+    selected_card = card.split.first
+    automobile = Automobile.find_by(brand: selected_card)
+    dom_section = "#automobile_#{automobile.id}"
+    within(dom_section) do
+        click_on element
+    end
+end
+  

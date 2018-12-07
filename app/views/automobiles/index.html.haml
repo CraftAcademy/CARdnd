@@ -1,3 +1,4 @@
+
 - @automobiles.each do |car|
   .max-w-md.w-full.lg:flex
     .h-48.lg:h-auto.lg:w-48.flex-none.bg-cover.rounded-t.lg:rounded-t-none.lg:rounded-l.text-center.overflow-hidden{style: "background-image: url('https://images.unsplash.com/photo-1532974297617-c0f05fe48bff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80')", title: "Red car"}
@@ -6,5 +7,5 @@
         .text-black.font-bold.text-xl.mb-2= "#{car.brand} #{car.model}"
         %p.text-grey-darker.text-base0="Year: #{car.year}"
         %p.text-grey-darker.text-base="Price: #{car.price} SEK per day" 
-        = link_to "view"
         = link_to "Rent", new_rental_path(automobile_id: car)
+        = link_to "view", automobile_path(car)
