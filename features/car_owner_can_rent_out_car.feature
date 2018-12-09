@@ -1,3 +1,4 @@
+@javascript
 Feature: Car owner can rent out car
 
     As a car owner
@@ -13,9 +14,11 @@ Feature: Car owner can rent out car
         And I click "Add Car"
 
     Scenario: Car owner can succesfully rent out car
-        And I fill in "Brand" field with "Volvo"
-        And I fill in "Model" field with "V60"
-        And I fill in "Year" field with "2010"
+        And I wait 4 seconds
+        And I select "Volvo" from "Brand"
+        And I select "2010" from "Year"
+        And I wait 2 seconds
+        And I select "V70" from "Model"
         And I fill in "Price" field with "200"
         And I click "Save Car"
         Then I should see "Car succesfully added"
