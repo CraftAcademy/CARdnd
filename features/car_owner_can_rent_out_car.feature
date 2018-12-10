@@ -22,7 +22,7 @@ Feature: Car owner can rent out car
         And I fill in "Price" field with "200"
         And I click "Save Car"
         Then I should see "Car succesfully added"
-        And I should see "Volvo V60"
+        And I should see "Volvo V70"
         And I should see "Year: 2010"
         And I should see "Price: 200 SEK per day"
 

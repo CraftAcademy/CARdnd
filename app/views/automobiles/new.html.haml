@@ -8,22 +8,18 @@
             %ul
                 - @automobile.errors.full_messages.each do |msg|
                     %li= msg
+    = form.hidden_field :brand
+    = form.hidden_field :model
     %p
-        = form.label :brand
+        = form.label :brand_id, 'Brand'
         %br/
-        = form.select :brand, options_for_select(@brands.map { |brand| [brand[:brand], brand[:id]] })
-        =# form.text_field :brand
-    %p
-        =# form.label :model
-        %br/
-        =# form.text_field :model
+        = form.select :brand_id, options_for_select(@brands.map { |brand| [brand[:brand], brand[:id]] })
+
     %p
         = form.label :year
         %br/
-        =# form.text_field :year
         = form.select :year, (2000..Date.today.year).to_a
-    #automobile_model
-
+    #automobile_model_wrapper
     %p
         = form.label :price
         %br/

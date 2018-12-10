@@ -44,7 +44,7 @@ class AutomobilesController < ApplicationController
   end
 
   def get_models
-    models = AutomobileService.list_make_year_models(params[:automobile], params[:year])
+    models = AutomobileService.list_brand_year_models(params[:brand_id], params[:year])
     html = render_to_string('_model_select', formats: :html, layout: false, locals: { models: models })
     render json: { html: html }
   end
