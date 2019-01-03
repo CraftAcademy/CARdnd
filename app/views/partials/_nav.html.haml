@@ -1,8 +1,14 @@
-= notice || alert
--if user_signed_in?
-    %p Hello, #{current_user.email}
-    =link_to "Logout", destroy_user_session_path, method: :delete
-    =link_to "View Profile", user_path(current_user)
--else
-    =link_to "Registration" , new_user_registration_path
-    =link_to "Login", new_user_session_path
+.nav_bar
+    .notice_message
+        - flash.each do |key, value|
+            %div{class: "#{flash_class(key)}"}
+                = value
+    .nav_bar_links
+        = link_to "Home" , root_path, {class: "navbarlinks"}
+        -if user_signed_in?
+            %p Hello, #{current_user.email}
+            =link_to "View Profile", user_path(current_user), {class: "navbarlinks"}
+            =link_to "Logout", destroy_user_session_path,{class: "navbarlinks", method: :delete}
+        -else
+            =link_to "Registration" , new_user_registration_path , {class: "navbarlinks"}
+            =link_to "Login", new_user_session_path, {class: "navbarlinks"}

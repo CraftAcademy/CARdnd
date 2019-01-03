@@ -1,17 +1,16 @@
-.flex.justify-center.mt-8.mr-8.ml-8
-    .max-w-lg.rounded.overflow-hidden.shadow-lg{id: dom_id(@automobile)}
-        %img.w-full{src: "https://www.askideas.com/wp-content/uploads/2016/11/Man-Driving-Tiny-Car-Funny-Picture.jpg"}/
+.flex.justify-center
+    .max-w-lg.h-65pc.rounded.overflow-hidden.shadow-lg.bg-white{id: dom_id(@automobile)}
+        %img.w-full.h-65pc{src: "https://images.unsplash.com/photo-1536332016596-dc50468cbf41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"}/
         .px-6.py-4
-            .font-bold.text-xl.mb-2= "#{@automobile.brand}"
-            .font-semibold.text-xl.mb-2= "#{@automobile.model}"
-            %p.text-grey-darker.text-base= "Description: #{@automobile.description}"
+            .font-bold.text-xl.mb-2= "#{@automobile.brand} #{@automobile.model}"
+            %p.text-black.text-base= "Description: #{@automobile.description}"
         .px-6.py-4
-            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2="Year: #{@automobile.year}"
-            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker="Price: #{@automobile.price} SEK per day"
-            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker= "Engine: #{@automobile.engine}"
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-black.mr-2="Year: #{@automobile.year}"
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-black="Price: #{@automobile.price} SEK per day"
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-black= "Engine: #{@automobile.engine}"
             - if @automobile.rental_status?
-                Currently rented
+                .px-6.py-4
+                %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2 Currently rented
             -else
                 .px-6.py-4
-                .flex.self-auto.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker=link_to  "Rent this car"
-= link_to "Back" , root_path
+                %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2=link_to  "Drive this car", new_rental_path(automobile_id: @automobile)

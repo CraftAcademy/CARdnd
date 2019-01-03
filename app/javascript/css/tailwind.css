@@ -1,0 +1,52 @@
+
+@tailwind preflight;
+
+@tailwind components;
+
+@tailwind utilities;
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav_bar {
+    height: 75px;
+    background-color:#074810;
+    position: relative;
+    color: white;
+}
+.navbarlinks{
+    text-decoration: none;
+    color:white;
+}
+.navbarlinks:hover{
+    color: orange;
+}
+
+.indexlinks{
+    text-decoration: none;
+    color: gray;
+}
+.indexlinks:hover{
+    background-color: #8795a1;
+    color: white;
+}
+
+.profile img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}

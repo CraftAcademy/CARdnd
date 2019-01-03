@@ -21,6 +21,7 @@ RSpec.describe Automobile, type: :model do
 
   describe 'Associations' do
     it { should belong_to(:user) }
+    it { should have_many(:rental) }
   end
 
   describe 'Attachments' do

@@ -24,6 +24,7 @@ RSpec.describe User, type: :model do
 
   describe 'Associations' do
     it { should have_many(:automobile) }
+    it { should have_many(:rental) }
   end
   
   describe FactoryBot do 

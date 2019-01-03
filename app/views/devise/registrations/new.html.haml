@@ -1,49 +1,51 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    .field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
-    .field
-        = f.label :password
-    - if @minimum_password_length
-        %em
-        (#{@minimum_password_length} characters minimum)
-        %br/
-        = f.password_field :password, autocomplete: "new-password"
-    .field
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "new-password"
-    .field
-        = f.label :first_name
-        %br/
-        = f.text_field :first_name, autocomplete: "first-name"
-    .field
-        = f.label :last_name
-        %br/
-        = f.text_field :last_name, autocomplete: "last-name"
-    .field
-        = f.label :address
-        %br/
-        = f.text_field :address, autocomplete: "address"
-    .field
-        = f.label :driving_age
-        %br/
-        = f.text_field :driving_age, autocomplete: "drivingage"
-    .field
-        = f.label :age
-        %br/
-        = f.text_field :age, autocomplete: "age"
-    .field
-        = f.label :about
-        %br/
-        = f.text_area :about, autocomplete: "about"
-    .field
-        = f.label :phone
-        %br/
-        = f.text_field :phone, autocomplete: "phone"
-    .actions
-        = f.submit "Sign up"
-= render "devise/shared/links"
+.flex.justify-center.mt-8.mb-8
+    %h2.mr-4.underline Sign up
+    .border.border-solid.w-30p.bg-grey-dark
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            .field.ml-2
+                = f.label :email
+                %br/
+                = f.email_field :email, autofocus: true, autocomplete: "email"
+            .field.ml-2
+                = f.label :password
+            - if @minimum_password_length
+                %em
+                (#{@minimum_password_length} characters minimum)
+                %br/
+                = f.password_field :password, autocomplete: "new-password"
+            .field.ml-2
+                = f.label :password_confirmation
+                %br/
+                = f.password_field :password_confirmation, autocomplete: "new-password"
+            .field.ml-2
+                = f.label :first_name
+                %br/
+                = f.text_field :first_name, autocomplete: "first-name"
+            .field.ml-2
+                = f.label :last_name
+                %br/
+                = f.text_field :last_name, autocomplete: "last-name"
+            .field.ml-2
+                = f.label :address
+                %br/
+                = f.text_field :address, autocomplete: "address"
+            .field.ml-2
+                = f.label :driving_age
+                %br/
+                = f.text_field :driving_age, autocomplete: "drivingage"
+            .field.ml-2
+                = f.label :age
+                %br/
+                = f.text_field :age, autocomplete: "age"
+            .field.ml-2
+                = f.label :about
+                %br/
+                = f.text_area :about, autocomplete: "about"
+            .field.ml-2
+                = f.label :phone
+                %br/
+                = f.text_field :phone, autocomplete: "phone"
+            .button.shadow.bg-grey.hover.bg-grey-light.focus.shadow-outline.focus.outline-none.text-white.font-bold.py-2.px-4.rounded.mt-2.ml-2.mr-2
+                = f.submit "Sign up"
+        = render "devise/shared/links"

@@ -1,0 +1,13 @@
+%h3.mt-4 Renter's History
+- rent = Rental.all
+- total_spending = 0
+- rent.each do |rental|
+    -if rental.user.id == current_user.id
+        -total_spending += rental.automobile.price
+        .my-2
+            %span= rental.automobile.brand
+            %span= rental.automobile.model
+            %span= "#{rental.automobile.price} SEK"
+            %span= "from: #{rental.automobile.user.first_name}"
+%h3="Your total spending: #{total_spending} SEK"
+

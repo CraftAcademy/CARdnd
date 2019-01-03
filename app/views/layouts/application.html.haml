@@ -6,10 +6,10 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', data: {'turbolinks-track' => 'reload'}
     = javascript_include_tag 'application', data: {'turbolinks-track' => 'reload'}
-    %link{href: "https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css", rel: "stylesheet"}/
+    = stylesheet_pack_tag    'application' 
+    = javascript_pack_tag 'application' 
+    %link{href: "https://fonts.googleapis.com/css?family=Kanit", rel: "stylesheet"}/
+    %script{src: 'https://js.stripe.com/v3/'}
   %body
     = render partial: 'partials/nav'
-    - flash.each do |key, value|
-      %div{class: "#{flash_class(key)}"}
-        = value
     = yield

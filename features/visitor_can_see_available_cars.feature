@@ -4,6 +4,9 @@ Feature: Visitor can see all cars available for rent
     I want to see all the cars available for rent when I visit the site
 
     Background:
+        Given the following user exists
+            | first_name |
+            | Greg       |
         Given The following cars exist
             | brand | model | year | price | user |
             | Volvo | V60   | 2010 | 200   | Greg |

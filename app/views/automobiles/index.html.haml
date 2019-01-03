@@ -1,10 +1,24 @@
-
-- @automobiles.each do |car|
-  .max-w-md.w-full.lg:flex
-    .h-48.lg:h-auto.lg:w-48.flex-none.bg-cover.rounded-t.lg:rounded-t-none.lg:rounded-l.text-center.overflow-hidden{style: "background-image: url('https://images.unsplash.com/photo-1532974297617-c0f05fe48bff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80')", title: "Red car"}
-    .border-r.border-b.border-l.border-grey-light.lg:border-l-0.lg:border-t.lg:border-grey-light.bg-white.rounded-b.lg:rounded-b-none.lg:rounded-r.p-4.flex.flex-col.justify-between.leading-normal
-      .mb-8{id: dom_id(car)}
-        .text-black.font-bold.text-xl.mb-2= "#{car.brand} #{car.model}"
-        %p.text-grey-darker.text-base0="Year: #{car.year}"
-        %p.text-grey-darker.text-base="Price: #{car.price} SEK per day" 
-        = link_to "view", automobile_path(car)
+.header
+  = image_tag "background_yellow_logo.png"
+.car_div.flex.flex-wrap.justify-around
+  - @automobiles.each do |car|
+    .bg-grey-light.rounded-lg.w-30p.m-4.shadow-lg
+      .w-full.h-25p.flex.flex-col.rounded.shadow-lg
+        - if car.image.attached?
+          =image_tag car.image
+        - else
+          =image_tag "default.jpg"
+        .border-transparent.lg.pl-2
+          .mb-8{id: dom_id(car)}
+            %h2.mt-3= "#{car.brand} #{car.model}"
+            %br
+            .rent_status.mt-3
+              -if car.rental_status == true
+                %h4 Rented out
+              -else
+                %h4 Available for rent
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4="Price: #{car.price} SEK per day"
+            %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4="Year: #{car.year}"
+            %br/
+            %span.indexlinks.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4= link_to "Dream", automobile_path(car), {class: "indexlinks"}
+            %span.indexlinks.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4= link_to "Check out the Owner", user_path(car.user.id), {class: "indexlinks"}

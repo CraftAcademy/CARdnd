@@ -1,37 +1,56 @@
 -if @user == current_user
-    =link_to 'Edit Profile', edit_user_registration_path
-    %h4 Name:
-    %p= "#{@user.first_name} #{@user.last_name}"
-
-    %h4 Email:
-    %p= @user.email
-
-    %h4 Address:
-    %p= @user.address
-
-    %h4 Age:
-    %p= @user.age
-
-    %h4 Driving Age:
-    %p= @user.driving_age
-
-    %h4 Phone:
-    %p= @user.phone
-
-    %h4 About:
-    %p= @user.about
-
-%h4=link_to "Add Car", new_automobile_path
-- @user.automobile.each do |car|
-    .max-w-md.w-full.lg:flex
-        .mb-8{id: dom_id(car)}
-            .text-black.font-bold.text-xl.mb-2= "#{car.brand} #{car.model}"
-            %p.text-grey-darker.text-base0="Year: #{car.year}"
-            %p.text-grey-darker.text-base="Price: #{car.price} SEK per day" 
-            =link_to "Edit", edit_automobile_path(car["id"])
-            =link_to "Delete", automobile_path(car["id"]), method: :delete
-            - if car.image.attached?
-                =image_tag car.image, {class: "w-64 h-64"}
-
-
-=link_to "Back" , root_path
+    .flex.justify-between
+        .profile.bg-grey-light.rounded-lg.w-20p.m-4.shadow-lg.text-center
+            .w-full.h-25p.flex.flex-col.p-5.items-center
+                =image_tag "profile_avatar.png"
+            .border-transparent.lg.pl-2
+                %h4 Name
+                %p= "#{@user.first_name} #{@user.last_name}"
+                %br
+                %h4 Email
+                %p= @user.email
+                %br
+                %h4 Address
+                %p= @user.address
+                %br
+                %h4 Age
+                %p= @user.age
+                %br
+                %h4 Driving Age
+                %p= @user.driving_age
+                %br
+                %h4 Phone
+                %p= @user.phone
+                %br
+                %h4 About
+                %p= @user.about
+                %br
+                %br
+                %span.indexlinks.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4.mb-4=link_to 'Edit Profile', edit_user_registration_path
+                %span.indexlinks.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4.mb-4=link_to "Add Car", new_automobile_path
+        .flex-flex.flex-wrap
+            - @user.automobile.each do |car|
+                .bg-grey-light.rounded-lg.w-75p.m-4.shadow-lg
+                    .w-full.h-25p.flex.flex-col.rounded.shadow-lg
+                    - if car.image.attached?
+                        =image_tag car.image
+                    - else
+                        =image_tag "default.jpg"
+                    .border-transparent.lg.pl-2
+                        .mb-8{id: dom_id(car)}
+                            %h2.mt-3= "#{car.brand} #{car.model}"
+                            %br
+                            .rent_status.mt-3
+                                -if car.rental_status == true
+                                    %h4 Rented out
+                                -else
+                                    %h4 Available for rent
+                                %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4="Price: #{car.price} SEK per day"
+                                %span.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4="Year: #{car.year}"
+                                %br/
+                                %span.indexlinks.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4= link_to "Edit", edit_automobile_path(car), {class: "indexlinks"}
+                                %span.indexlinks.inline-block.bg-grey-lighter.rounded.border.px-3.py-1.text-sm.font-semibold.text-grey-darker.mr-2.mt-4= link_to "Delete", automobile_path(car), {class: "indexlinks", method: :delete}
+        %d
+            = render partial: 'partials/owner_history'
+        %d
+            = render partial: 'partials/renter_history' 
