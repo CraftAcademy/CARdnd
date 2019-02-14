@@ -1,4 +1,4 @@
-= form_with scope: :automobile, url: automobiles_path, local: true do | form |
+= form_with scope: :automobile, url: automobiles_path, local: true , id: :create_automobile do | form |
     - if @automobile.errors.any?
         #error_explanation
             %h2
@@ -8,18 +8,18 @@
             %ul
                 - @automobile.errors.full_messages.each do |msg|
                     %li= msg
+    = form.hidden_field :brand
+    = form.hidden_field :model
     %p
-        = form.label :brand
+        = form.label :brand_id, 'Brand'
         %br/
-        = form.text_field :brand
-    %p
-        = form.label :model
-        %br/
-        = form.text_field :model
+        = form.select :brand_id, options_for_select(@brands.map { |brand| [brand[:brand], brand[:id]] })
+
     %p
         = form.label :year
         %br/
-        = form.text_field :year
+        = form.select :year, (2000..Date.today.year).to_a
+    #automobile_model_wrapper
     %p
         = form.label :price
         %br/

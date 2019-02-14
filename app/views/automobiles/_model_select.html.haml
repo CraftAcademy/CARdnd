@@ -1,0 +1,4 @@
+%p
+    = label_tag 'automobile[model_id]', 'Model'
+    %br/
+    = select_tag 'automobile[model_id]', options_for_select(models.collect {|c| [ c[:model], c[:id] ] }, { include_blank: true })

@@ -8,6 +8,7 @@ class AutomobilesController < ApplicationController
 
   def new
     @automobile = Automobile.new
+    @brands = AutomobileService.list_brands
   end
 
   def create
@@ -40,6 +41,12 @@ class AutomobilesController < ApplicationController
     @automobile = Automobile.find(params[:id])
     @automobile.destroy
     redirect_to user_path(current_user)
+  end
+
+  def get_models
+    models = AutomobileService.list_brand_year_models(params[:brand_id], params[:year])
+    html = render_to_string('_model_select', formats: :html, layout: false, locals: { models: models })
+    render json: { html: html }
   end
   
   private
